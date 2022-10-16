@@ -15,7 +15,10 @@ public class actions: ObservableObject {
     @Published var status = ""
     
     func Install() {
-        guard !isWorking else { return }
+        guard !isWorking else {
+            self.status = "Pogo is busy"
+            return
+        }
         isWorking = true
         guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
             NSLog("[POGO] Failed to find bootstrap")
@@ -85,10 +88,14 @@ public class actions: ObservableObject {
                 }
             }
         }
+        self.isWorking = false
     }
 
     func Remove() {
-        guard !isWorking else { return }
+        guard !isWorking else {
+            self.status = "Pogo is busy"
+            return
+        }
         isWorking = true
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "PogoHelper") else {
             NSLog("[POGO] Could not find helper?")
