@@ -7,20 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1A8BDC28FCA91200C96F02 /* PogoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDB28FCA91200C96F02 /* PogoApp.swift */; };
+		0A1A8BDE28FCA92700C96F02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDD28FCA92700C96F02 /* ContentView.swift */; };
+		0A1A8BE028FCA93600C96F02 /* actionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDF28FCA93600C96F02 /* actionController.swift */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E131379D28CFB9B100754132 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E131379C28CFB9B100754132 /* ArgumentParser */; };
 		E17927D828D247B2009D8F83 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E17927D728D247B2009D8F83 /* SWCompression */; };
 		E17927DB28D24E1C009D8F83 /* org.coolstar.sileo_2.4_iphoneos-arm64.deb in Resources */ = {isa = PBXBuildFile; fileRef = E17927D928D24DB6009D8F83 /* org.coolstar.sileo_2.4_iphoneos-arm64.deb */; };
 		E17927DD28D267F4009D8F83 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = E17927DC28D267F4009D8F83 /* bootstrap.tar */; };
-		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
-		E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BADD28CF914300CD25A6 /* ViewController.swift */; };
 		E181BAE328CF914500CD25A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E181BAE228CF914500CD25A6 /* Assets.xcassets */; };
-		E181BAE628CF914500CD25A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E181BAE428CF914500CD25A6 /* LaunchScreen.storyboard */; };
 		E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */; };
 		E1C440AD28D0EDFB000DBB1A /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */; };
-		E1C440B528D112F3000DBB1A /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C440B428D112F3000DBB1A /* BaseNavigationController.swift */; };
-		E1C440B728D112FA000DBB1A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C440B628D112FA000DBB1A /* BaseViewController.swift */; };
-		E1C440B928D11300000DBB1A /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C440B828D11300000DBB1A /* ThemeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,21 +33,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A1A8BDB28FCA91200C96F02 /* PogoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PogoApp.swift; sourceTree = "<group>"; };
+		0A1A8BDD28FCA92700C96F02 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0A1A8BDF28FCA93600C96F02 /* actionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = actionController.swift; sourceTree = "<group>"; };
 		E131378228CF9C1B00754132 /* Pogo-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pogo-BridgingHeader.h"; sourceTree = "<group>"; };
 		E131378728CFA0BC00754132 /* PogoHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = PogoHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		E131378E28CFA16B00754132 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E17927D928D24DB6009D8F83 /* org.coolstar.sileo_2.4_iphoneos-arm64.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "org.coolstar.sileo_2.4_iphoneos-arm64.deb"; sourceTree = "<group>"; };
 		E17927DC28D267F4009D8F83 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
 		E181BAD628CF914300CD25A6 /* Pogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E181BAD928CF914300CD25A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E181BADD28CF914300CD25A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E181BAE228CF914500CD25A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E181BAE528CF914500CD25A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E181BAE728CF914500CD25A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
-		E1C440B428D112F3000DBB1A /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
-		E1C440B628D112FA000DBB1A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		E1C440B828D11300000DBB1A /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,16 +106,13 @@
 			isa = PBXGroup;
 			children = (
 				E131378128CF9B8800754132 /* Required */,
-				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
-				E181BADD28CF914300CD25A6 /* ViewController.swift */,
+				0A1A8BDF28FCA93600C96F02 /* actionController.swift */,
+				0A1A8BDD28FCA92700C96F02 /* ContentView.swift */,
+				0A1A8BDB28FCA91200C96F02 /* PogoApp.swift */,
 				E181BAE228CF914500CD25A6 /* Assets.xcassets */,
-				E181BAE428CF914500CD25A6 /* LaunchScreen.storyboard */,
 				E181BAE728CF914500CD25A6 /* Info.plist */,
 				E131378228CF9C1B00754132 /* Pogo-BridgingHeader.h */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
-				E1C440B428D112F3000DBB1A /* BaseNavigationController.swift */,
-				E1C440B628D112FA000DBB1A /* BaseViewController.swift */,
-				E1C440B828D11300000DBB1A /* ThemeManager.swift */,
 			);
 			path = Pogo;
 			sourceTree = "<group>";
@@ -216,7 +207,6 @@
 			files = (
 				E17927DD28D267F4009D8F83 /* bootstrap.tar in Resources */,
 				E17927DB28D24E1C009D8F83 /* org.coolstar.sileo_2.4_iphoneos-arm64.deb in Resources */,
-				E181BAE628CF914500CD25A6 /* LaunchScreen.storyboard in Resources */,
 				E181BAE328CF914500CD25A6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,27 +227,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1C440B728D112FA000DBB1A /* BaseViewController.swift in Sources */,
-				E1C440B528D112F3000DBB1A /* BaseNavigationController.swift in Sources */,
-				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
-				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
+				0A1A8BDC28FCA91200C96F02 /* PogoApp.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
-				E1C440B928D11300000DBB1A /* ThemeManager.swift in Sources */,
+				0A1A8BDE28FCA92700C96F02 /* ContentView.swift in Sources */,
+				0A1A8BE028FCA93600C96F02 /* actionController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E181BAE428CF914500CD25A6 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E181BAE528CF914500CD25A6 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E131378C28CFA0BC00754132 /* Debug */ = {
