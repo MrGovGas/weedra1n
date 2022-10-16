@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Pogo
 //
-//  Created by Leonard Lausen on 16.10.22.
+//  Created by Uckermark on 16.10.22.
 //
 
 import SwiftUI
@@ -43,6 +43,7 @@ struct ContentView: View {
                                 .multilineTextAlignment(.center)
                         }
                         .background(Color(.systemGroupedBackground))
+                        .padding()
                     }
             }
             Text(action.status)

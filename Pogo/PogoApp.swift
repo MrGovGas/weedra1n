@@ -2,7 +2,7 @@
 //  PogoApp.swift
 //  Pogo
 //
-//  Created by Leonard Lausen on 16.10.22.
+//  Created by Uckermark on 16.10.22.
 //
 
 import Foundation
