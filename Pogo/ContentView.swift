@@ -19,32 +19,35 @@ struct ContentView: View {
                 Button("Install", action: action.Install)
                 Button("Remove", action: action.Remove)
                 Button("Tools") { showPopover = true}
-                    .popover(isPresented: $showPopover) {
-                        VStack {
-                            Text("Tools")
-                                .font(.headline)
-                                .fontWeight(.semibold)
-                                .multilineTextAlignment(.center)
-                                .padding()
-                            List {
-                                Section {
-                                    Button("uicache", action: action.runUiCache)
-                                    Button("Remount Preboot", action: action.remountPreboot)
-                                    Button("Launch Daemons", action: action.launchDaemons)
-                                    Button("Respring", action: action.respring)
-                                }
-                                Section {
-                                    Button("Do All", action: action.Tools)
-                                }
-                            }
-                            Text("Pogo - by Amy")
-                                .font(.callout)
-                                .fontWeight(.ultraLight)
-                                .multilineTextAlignment(.center)
-                        }
-                        .background(Color(.systemGroupedBackground))
-                        .padding()
+                    .confirmationDialog("", isPresented: $showPopover) {
+                        Button("uicache", action: action.runUiCache)
+                        Button("Remount Preboot", action: action.remountPreboot)
+                        Button("Launch Daemons", action: action.launchDaemons)
+                        Button("Respring", action: action.respring)
+                        Button("Do All", action: action.Tools)
                     }
+                    //.popover(isPresented: $showPopover) {
+                        //VStack {
+                            //Text("Tools")
+                                //.font(.headline)
+                                //.fontWeight(.semibold)
+                                //.multilineTextAlignment(.center)
+                                //.padding()
+                            //List {
+                                //Section {
+                                    //Button("uicache", action: action.runUiCache)
+                                    //Button("Remount Preboot", action: action.remountPreboot)
+                                    //Button("Launch Daemons", action: action.launchDaemons)
+                                    //Button("Respring", action: action.respring)
+                                //}
+                                //Section {
+                                    //Button("Do All", action: action.Tools)
+                                //}
+                            //}
+                        //}
+                        //.padding()
+                        //.background(Color(.systemGroupedBackground))
+                    //}
             }
             Text(action.status)
             Text("v\(version) (\(gitCommit))")
