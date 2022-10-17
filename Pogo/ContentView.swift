@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var action: actions
-    @State private var showPopover = false
+    @ObservedObject var action: Actions
+    @State private var showTools = false
     private let gitCommit = Bundle.main.infoDictionary?["REVISION"] as? String ?? "unknown"
     private let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
     
@@ -18,39 +18,27 @@ struct ContentView: View {
             List {
                 Button("Install", action: action.Install)
                 Button("Remove", action: action.Remove)
-                Button("Tools") { showPopover = true}
-                    .confirmationDialog("", isPresented: $showPopover) {
+                Button("Tools") { showTools = true }
+                    .confirmationDialog("", isPresented: $showTools) {
                         Button("uicache", action: action.runUiCache)
                         Button("Remount Preboot", action: action.remountPreboot)
                         Button("Launch Daemons", action: action.launchDaemons)
                         Button("Respring", action: action.respring)
-                        Button("Do All", action: action.Tools)
+                        Button("Do All", action: action.runTools)
                     }
-                    //.popover(isPresented: $showPopover) {
-                        //VStack {
-                            //Text("Tools")
-                                //.font(.headline)
-                                //.fontWeight(.semibold)
-                                //.multilineTextAlignment(.center)
-                                //.padding()
-                            //List {
-                                //Section {
-                                    //Button("uicache", action: action.runUiCache)
-                                    //Button("Remount Preboot", action: action.remountPreboot)
-                                    //Button("Launch Daemons", action: action.launchDaemons)
-                                    //Button("Respring", action: action.respring)
-                                //}
-                                //Section {
-                                    //Button("Do All", action: action.Tools)
-                                //}
-                            //}
-                        //}
-                        //.padding()
-                        //.background(Color(.systemGroupedBackground))
-                    //}
             }
-            Text(action.status)
-            Text("v\(version) (\(gitCommit))")
+            HStack {
+                Text(action.log)
+                    .font(.body)
+                    .multilineTextAlignment(.leading)
+                Spacer()
+                    
+            }
+            HStack {
+                Text("v\(version) (\(gitCommit))")
+                Spacer()
+                Text(action.status)
+            }
         }
         .background(Color(.systemGroupedBackground))
     }
@@ -58,6 +46,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(action: actions())
+        ContentView(action: Actions())
     }
 }

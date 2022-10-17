@@ -10,7 +10,7 @@ import SwiftUI
 
 @main
 struct PogoApp: App {
-    var action = actions()
+    var action = Actions()
     var body: some Scene {
         WindowGroup {
             ContentView(action: action)
