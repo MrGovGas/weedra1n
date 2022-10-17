@@ -32,8 +32,8 @@ struct ContentView: View {
                     .font(.body)
                     .multilineTextAlignment(.leading)
                 Spacer()
-                    
             }
+            Divider()
             HStack {
                 Text("v\(version) (\(gitCommit))")
                 Spacer()

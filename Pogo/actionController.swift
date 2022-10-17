@@ -15,7 +15,6 @@ public class Actions: ObservableObject {
     
     func Install() {
         guard !isWorking else {
-            self.status = "Pogo is busy"
             self.addToLog(msg: "[*] Pogo is busy")
             return
         }
@@ -45,7 +44,7 @@ public class Actions: ObservableObject {
         }
         
         status = "Installing Bootstrap"
-        self.addToLog(msg: "[*] Installing Bootatrap")
+        self.addToLog(msg: "[*] Installing Bootstrap")
         DispatchQueue.global(qos: .utility).async { [self] in
             spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
             let ret = spawn(command: helper, args: ["-i", tar], root: true)
@@ -104,7 +103,6 @@ public class Actions: ObservableObject {
 
     func Remove() {
         guard !isWorking else {
-            self.status = "Pogo is busy"
             self.addToLog(msg: "[*] Pogo is busy")
             return
         }
@@ -191,7 +189,6 @@ public class Actions: ObservableObject {
     
     func respring() {
         spawn(command: "/var/jb/usr/bin/sbreload", args: [], root: true)
-        self.addToLog(msg: "[*] Respring...")
     }
     
     func runTools() {
@@ -199,7 +196,6 @@ public class Actions: ObservableObject {
         self.remountPreboot()
         self.launchDaemons()
         self.respring()
-        self.addToLog(msg: "[*] run Tools sucessful")
     }
     
     func addToLog(msg: String) {
