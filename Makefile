@@ -10,10 +10,10 @@ package:
 	/usr/libexec/PlistBuddy -c "Set :REVISION ${GIT_REV}" "Pogo/Info.plist"
 
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Pogo.xcodeproj' -scheme Pogo -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(POGOTMP) \
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'weedra1n.xcodeproj' -scheme Pogo -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(POGOTMP) \
 		CODE_SIGNING_ALLOWED=NO DSTROOT=$(POGOTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'Pogo.xcodeproj' -scheme PogoHelper -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(POGOTMP) \
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'weedra1n.xcodeproj' -scheme PogoHelper -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(POGOTMP) \
 		CODE_SIGNING_ALLOWED=NO DSTROOT=$(POGOTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@rm -rf Payload
 	@rm -rf $(POGO_STAGE_DIR)/
