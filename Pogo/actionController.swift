@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
+import SwiftUI
 
 
 public class Actions: ObservableObject {
     private var isWorking: Bool
     @Published var log: String
     @Published var verbose: Bool
-    
     init() {
         isWorking = false
         log = ""
@@ -49,12 +50,15 @@ public class Actions: ObservableObject {
         
         self.addToLog(msg: "[*] Installing Bootstrap")
         DispatchQueue.global(qos: .utility).async { [self] in
-            vLog(msg: spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true).1)
+            let ret_a = spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
             let ret = spawn(command: helper, args: ["-i", tar], root: true)
-            vLog(msg: spawn(command: "/var/jb/usr/bin/chmod", args: ["4755", "/var/jb/usr/bin/sudo"], root: true).1)
-            vLog(msg: spawn(command: "/var/jb/usr/bin/chown", args: ["root:wheel", "/var/jb/usr/bin/sudo"], root: true).1)
+            let ret_b = spawn(command: "/var/jb/usr/bin/chmod", args: ["4755", "/var/jb/usr/bin/sudo"], root: true)
+            let ret_c = spawn(command: "/var/jb/usr/bin/chown", args: ["root:wheel", "/var/jb/usr/bin/sudo"], root: true)
             DispatchQueue.main.async {
+                self.vLog(msg: ret_a.1)
                 self.vLog(msg: ret.1)
+                self.vLog(msg: ret_b.1)
+                self.vLog(msg: ret_c.1)
                 if ret.0 != 0 {
                     self.addToLog(msg: "[*] Error Installing Bootstrap")
                     self.isWorking = false
@@ -178,7 +182,7 @@ public class Actions: ObservableObject {
     func remountPreboot() {
         let ret = spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
         vLog(msg: ret.1)
-        if ret.0 >= 0 {
+        if ret.0 == 0 {
             addToLog(msg: "[*] Remounted Preboot R/W")
         } else {
             addToLog(msg: "[*] Failed to remount Preboot R/W")
@@ -188,7 +192,7 @@ public class Actions: ObservableObject {
     func launchDaemons() {
         let ret = spawn(command: "/var/jb/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
         vLog(msg: ret.1)
-        if ret.0 >= 0 {
+        if ret.0 == 0 {
             addToLog(msg: "[*] Launched Daemons")
         } else {
             addToLog(msg: "[*] Failed to launch Daemons")
@@ -215,34 +219,30 @@ public class Actions: ObservableObject {
     }
     
     func vLog(msg: String) {
-        DispatchQueue.main.async {
-            if self.verbose {
-                self.addToLog(msg: msg)
-            }
+        if verbose {
+            self.addToLog(msg: msg)
         }
     }
     
-    func saveLog() {
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        let day = calendar.component(.day, from: date)
-        let month = calendar.component(.month, from: date)
-        let name = "Pogo-\(month)-\(day)-\(hour)-\(minute).log"
-        let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(name)
-        
-        do {
-            try log.write(to: url, atomically: true, encoding: .utf8)
-            let content = log
-            vLog(msg: "Saving log to file")
-            if try String(contentsOf: url) == content {
-                addToLog(msg: "[*] Log saved to Documents")
-            }
-        } catch {
-            NSLog("[POGO] Could not create logfile: \(error.localizedDescription)")
-            addToLog(msg: "[*] Failed to save log")
-            vLog(msg: String(error.localizedDescription))
+    func getLogFile() -> TextFile {
+        return TextFile(initialText: log)
+    }
+}
+
+struct TextFile: FileDocument {
+    static var readableContentTypes = [UTType.utf8PlainText]
+    var text = ""
+    
+    init(initialText: String = "") {
+        text = initialText
+    }
+    init(configuration: ReadConfiguration) throws {
+        if let data = configuration.file.regularFileContents {
+            text = String(decoding: data, as: UTF8.self)
         }
+    }
+    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+        let data = Data(text.utf8)
+        return FileWrapper(regularFileWithContents: data)
     }
 }
