@@ -10,6 +10,7 @@
 		0A1A8BDC28FCA91200C96F02 /* PogoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDB28FCA91200C96F02 /* PogoApp.swift */; };
 		0A1A8BDE28FCA92700C96F02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDD28FCA92700C96F02 /* ContentView.swift */; };
 		0A1A8BE028FCA93600C96F02 /* actionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDF28FCA93600C96F02 /* actionController.swift */; };
+		0A1A8BE228FDD1A000C96F02 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E131379D28CFB9B100754132 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E131379C28CFB9B100754132 /* ArgumentParser */; };
 		E17927D828D247B2009D8F83 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E17927D728D247B2009D8F83 /* SWCompression */; };
@@ -36,6 +37,7 @@
 		0A1A8BDB28FCA91200C96F02 /* PogoApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PogoApp.swift; sourceTree = "<group>"; };
 		0A1A8BDD28FCA92700C96F02 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0A1A8BDF28FCA93600C96F02 /* actionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = actionController.swift; sourceTree = "<group>"; };
+		0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E131378228CF9C1B00754132 /* Pogo-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pogo-BridgingHeader.h"; sourceTree = "<group>"; };
 		E131378728CFA0BC00754132 /* PogoHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = PogoHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		E131378E28CFA16B00754132 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				E181BAE728CF914500CD25A6 /* Info.plist */,
 				E131378228CF9C1B00754132 /* Pogo-BridgingHeader.h */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
+				0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */,
 			);
 			path = Pogo;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A1A8BE228FDD1A000C96F02 /* SettingsView.swift in Sources */,
 				0A1A8BDC28FCA91200C96F02 /* PogoApp.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 				0A1A8BDE28FCA92700C96F02 /* ContentView.swift in Sources */,

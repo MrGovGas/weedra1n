@@ -8,7 +8,7 @@
 import Foundation
 import Darwin.POSIX
 
-@discardableResult func spawn(command: String, args: [String], root: Bool) -> Int {
+@discardableResult func spawn(command: String, args: [String], root: Bool) -> (Int, String) {
     var pipestdout: [Int32] = [0, 0]
     var pipestderr: [Int32] = [0, 0]
 
@@ -19,11 +19,11 @@ import Darwin.POSIX
 
     guard fcntl(pipestdout[0], F_SETFL, O_NONBLOCK) != -1 else {
         NSLog("[POGO] Could not open stdout")
-        return -1
+        return (-1, "Could not open stdout")
     }
     guard fcntl(pipestderr[0], F_SETFL, O_NONBLOCK) != -1 else {
         NSLog("[POGO] Could not open stderr")
-        return -1
+        return (-1, "Could not open stderr")
     }
     
 
@@ -61,7 +61,7 @@ import Darwin.POSIX
     let spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], proenv + [nil])
     if spawnStatus != 0 {
         NSLog("[POGO] Spawn Status = \(spawnStatus)")
-        return -1
+        return (Int(spawnStatus), "Spawn Status = \(spawnStatus)")
     }
 
     close(pipestdout[1])
@@ -139,5 +139,5 @@ import Darwin.POSIX
     var status: Int32 = 0
     waitpid(pid, &status, 0)
     NSLog("[POGO] \(status) \(stdoutStr) \(stderrStr)")
-    return Int(status)
+    return (Int(status), "exit code: \(status)\n err: \(stderrStr)\n out: \(stdoutStr)")
 }

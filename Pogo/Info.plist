@@ -6,6 +6,10 @@
 	<array>
 		<string>PogoHelper</string>
 	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 	<key>REVISION</key>
 	<string></string>
 </dict>
