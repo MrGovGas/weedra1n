@@ -178,7 +178,7 @@ public class Actions: ObservableObject {
     func remountPreboot() {
         let ret = spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
         vLog(msg: ret.1)
-        if ret.0 == 0 {
+        if ret.0 >= 0 {
             addToLog(msg: "[*] Remounted Preboot R/W")
         } else {
             addToLog(msg: "[*] Failed to remount Preboot R/W")
@@ -188,7 +188,7 @@ public class Actions: ObservableObject {
     func launchDaemons() {
         let ret = spawn(command: "/var/jb/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
         vLog(msg: ret.1)
-        if ret.0 == 0 {
+        if ret.0 >= 0 {
             addToLog(msg: "[*] Launched Daemons")
         } else {
             addToLog(msg: "[*] Failed to launch Daemons")
@@ -215,8 +215,10 @@ public class Actions: ObservableObject {
     }
     
     func vLog(msg: String) {
-        if verbose {
-            addToLog(msg: msg)
+        DispatchQueue.main.async {
+            if self.verbose {
+                self.addToLog(msg: msg)
+            }
         }
     }
     
