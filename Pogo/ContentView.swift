@@ -53,5 +53,6 @@ struct ContentView: View {
             }
             .background(Color(.systemGroupedBackground))
         }
+        .navigationViewStyle(.stack)
     }
 }
