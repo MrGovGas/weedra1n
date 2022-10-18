@@ -1,37 +1,39 @@
 TARGET_CODESIGN = $(shell which ldid)
 
-POGOTMP = $(TMPDIR)/pogo
-POGO_STAGE_DIR = $(POGOTMP)/stage
-POGO_APP_DIR 	= $(POGOTMP)/Build/Products/Release-iphoneos/Pogo.app
-POGO_HELPER_PATH 	= $(POGOTMP)/Build/Products/Release-iphoneos/PogoHelper
+WRTMP = $(TMPDIR)/pogo
+WR_STAGE_DIR = $(WRTMP)/stage
+WR_APP_DIR 	= $(WRTMP)/Build/Products/Release-iphoneos/weedra1n.app
+WR_HELPER_PATH 	= $(WRTMP)/Build/Products/Release-iphoneos/weedra1nHelper
 GIT_REV=$(shell git rev-parse --short HEAD)
 
 package:
-	/usr/libexec/PlistBuddy -c "Set :REVISION ${GIT_REV}" "Pogo/Info.plist"
+	/usr/libexec/PlistBuddy -c "Set :REVISION ${GIT_REV}" "weedra1n/Info.plist"
 
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'weedra1n.xcodeproj' -scheme Pogo -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(POGOTMP) \
-		CODE_SIGNING_ALLOWED=NO DSTROOT=$(POGOTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'weedra1n.xcodeproj' -scheme weedra1n -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(WRTMP) \
+		CODE_SIGNING_ALLOWED=NO DSTROOT=$(WRTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'weedra1n.xcodeproj' -scheme PogoHelper -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(POGOTMP) \
-		CODE_SIGNING_ALLOWED=NO DSTROOT=$(POGOTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'weedra1n.xcodeproj' -scheme weedra1nHelper -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(WRTMP) \
+		CODE_SIGNING_ALLOWED=NO DSTROOT=$(WRTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@rm -rf Payload
-	@rm -rf $(POGO_STAGE_DIR)/
-	@mkdir -p $(POGO_STAGE_DIR)/Payload
-	@mv $(POGO_APP_DIR) $(POGO_STAGE_DIR)/Payload/Pogo.app
+	@rm -rf $(WR_STAGE_DIR)/
+	@mkdir -p $(WR_STAGE_DIR)/Payload
+	@mv $(WR_APP_DIR) $(WR_STAGE_DIR)/Payload/weedra1n.app
 
-	@echo $(POGOTMP)
-	@echo $(POGO_STAGE_DIR)
+	@echo $(WRTMP)
+	@echo $(WR_STAGE_DIR)
 
-	@mv $(POGO_HELPER_PATH) $(POGO_STAGE_DIR)/Payload/Pogo.app//PogoHelper
-	@$(TARGET_CODESIGN) -Sentitlements.xml $(POGO_STAGE_DIR)/Payload/Pogo.app/
-	@$(TARGET_CODESIGN) -Sentitlements.xml $(POGO_STAGE_DIR)/Payload/Pogo.app//PogoHelper
+	@ls $(WR_HELPER_PATH)
+	@ls $(WR_STAGE_DIR)
+	@mv $(WR_HELPER_PATH) $(WR_STAGE_DIR)/Payload/weedra1n.app/weedra1nHelper
+	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app/
+	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app//weedra1nHelper
 	
-	@rm -rf $(POGO_STAGE_DIR)/Payload/Pogo.app/_CodeSignature
+	@rm -rf $(WR_STAGE_DIR)/Payload/weedra1n.app/_CodeSignature
 
-	@ln -sf $(POGO_STAGE_DIR)/Payload Payload
+	@ln -sf $(WR_STAGE_DIR)/Payload Payload
 
 	@rm -rf packages
 	@mkdir -p packages
 
-	@zip -r9 packages/Pogo.ipa Payload
+	@zip -r9 packages/weedra1n.ipa Payload
