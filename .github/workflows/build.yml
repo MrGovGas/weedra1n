@@ -17,5 +17,5 @@ jobs:
      - name: Upload artifact
        uses: actions/upload-artifact@v3
        with:
-        name: Pogo
-        path: packages/Pogo.ipa
+        name: weedra1n
+        path: packages/weedra1n.ipa
