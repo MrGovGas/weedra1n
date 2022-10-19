@@ -22,7 +22,7 @@ struct ContentView: View {
                     Button("Remove", action: action.Remove)
                     Button("Tools") { showTools = true }
                         .confirmationDialog("", isPresented: $showTools) {
-                            Button("uicache", action: action.runUiCache)
+                            Button("Rebuild Icon Cache", action: action.runUiCache)
                             Button("Remount Preboot", action: action.remountPreboot)
                             Button("Launch Daemons", action: action.launchDaemons)
                             Button("Respring", action: action.respring)
@@ -45,7 +45,7 @@ struct ContentView: View {
                     Text("v\(version) (\(gitCommit))")
                     Spacer()
                     NavigationLink(destination: SettingsView(action: action)) {
-                        Text("Pogo")
+                        Text("weedra1n")
                             .foregroundColor(Color(UIColor.systemBackground))
                             .colorInvert()
                     }
