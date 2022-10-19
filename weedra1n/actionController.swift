@@ -85,7 +85,7 @@ public class Actions: ObservableObject {
                                 }
                                 self.addToLog(msg: "[*] UICache Sileo")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-p", "/var/jb/Applications/Sileo.app"], root: true)
+                                    let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-p", "/var/jb/Applications/Sileo-Nightly.app"], root: true)
                                     DispatchQueue.main.async {
                                         self.vLog(msg: ret.1)
                                         if ret.0 != 0 {
