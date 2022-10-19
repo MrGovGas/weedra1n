@@ -111,7 +111,7 @@ public class Actions: ObservableObject {
             return
         }
         isWorking = true
-        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "PogoHelper") else {
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "weedra1nHelper") else {
             NSLog("[weedra1n] Could not find helper?")
             self.addToLog(msg: "[*] Could not find helper")
             self.isWorking = false
