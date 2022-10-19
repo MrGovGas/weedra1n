@@ -18,18 +18,18 @@ struct Strap: ParsableCommand {
     var remove: Bool = false
     
     mutating func run() throws {
-        NSLog("[POGO] Spawned!")
+        NSLog("[weedInstaller] Spawned!")
         guard getuid() == 0 else { fatalError() }
 
         if let input = input {
-            NSLog("[POGO] Attempting to install \(input)")
+            NSLog("[weedInstaller] Attempting to install \(input)")
             
             let active = "/private/preboot/active"
             let uuid: String
             do {
                 uuid = try String(contentsOf: URL(fileURLWithPath: active), encoding: .utf8)
             } catch {
-                NSLog("[POGO] Could not find active directory")
+                NSLog("[weedInstaller] Could not find active directory")
                 fatalError()
             }
             let dest = "/private/preboot/\(uuid)/procursus"
@@ -37,7 +37,7 @@ struct Strap: ParsableCommand {
                 try autoreleasepool {
                     let data = try Data(contentsOf: URL(fileURLWithPath: input))
                     let container = try TarContainer.open(container: data)
-                    NSLog("[POGO] Opened Container")
+                    NSLog("[weedInstaller] Opened Container")
                     for entry in container {
                         do {
                             var path = entry.info.name
@@ -71,7 +71,7 @@ struct Strap: ParsableCommand {
                                 guard let data = entry.data else { continue }
                                 try data.write(to: URL(fileURLWithPath: path))
                             default:
-                                NSLog("[POGO] Unknown Action for \(entry.info.type)")
+                                NSLog("[weedInstaller] Unknown Action for \(entry.info.type)")
                             }
                             var attributes = [FileAttributeKey: Any]()
                             attributes[.posixPermissions] = entry.info.permissions?.rawValue
@@ -87,24 +87,24 @@ struct Strap: ParsableCommand {
                                 continue
                             }
                         } catch {
-                            NSLog("[POGO] error \(error.localizedDescription)")
+                            NSLog("[weedInstaller] error \(error.localizedDescription)")
                         }
                     }
                 }
             } catch {
-                NSLog("[POGO] Failed with error \(error.localizedDescription)")
+                NSLog("[weedInstaller] Failed with error \(error.localizedDescription)")
                 return
             }
-            NSLog("[POGO] Strapped to \(dest)")
+            NSLog("[weedInstaller] Strapped to \(dest)")
             do {
                 if !FileManager.default.fileExists(atPath: "/var/jb") {
                     try FileManager.default.createSymbolicLink(atPath: "/var/jb", withDestinationPath: dest)
                 }
             } catch {
-                NSLog("[POGO] Failed to make link")
+                NSLog("[weedInstaller] Failed to make link")
                 fatalError()
             }
-            NSLog("[POGO] Linked to /var/jb")
+            NSLog("[weedInstaller] Linked to /var/jb")
             var attributes = [FileAttributeKey: Any]()
             attributes[.posixPermissions] = 0o755
             attributes[.ownerAccountName] = "mobile"
@@ -112,7 +112,7 @@ struct Strap: ParsableCommand {
             do {
                 try FileManager.default.setAttributes(attributes, ofItemAtPath: "/var/jb/var/mobile")
             } catch {
-                NSLog("[POGO] thats wild")
+                NSLog("[weedInstaller] thats wild")
             }
         } else if remove {
             let active = "/private/preboot/active"
@@ -120,7 +120,7 @@ struct Strap: ParsableCommand {
             do {
                 uuid = try String(contentsOf: URL(fileURLWithPath: active), encoding: .utf8)
             } catch {
-                NSLog("[POGO] Could not find active directory")
+                NSLog("[weedInstaller] Could not find active directory")
                 fatalError()
             }
             let dest = "/private/preboot/\(uuid)/procursus"
@@ -128,7 +128,7 @@ struct Strap: ParsableCommand {
                 try FileManager.default.removeItem(at: URL(fileURLWithPath: dest))
                 try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb"))
             } catch {
-                NSLog("[POGO] Failed with error \(error.localizedDescription)")
+                NSLog("[weedInstaller] Failed with error \(error.localizedDescription)")
             }
             
         }
