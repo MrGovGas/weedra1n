@@ -24,8 +24,9 @@ struct SettingsView: View {
         .fileExporter(isPresented: $showFile, document: action.getLogFile(),
                       contentType: .utf8PlainText, defaultFilename: "weed_log") { result in
             switch result {
-                case .success(let url):
-                action.addToLog(msg: "[*] Shared log successfully")
+            case .success(let url):
+                action.addToLog(msg: "[*] Shared log successful")
+                action.vLog(msg: "url: \(url)")
                 case .failure(let error):
                 action.addToLog(msg: "[*] Failed to share log")
                 action.vLog(msg: error.localizedDescription)
