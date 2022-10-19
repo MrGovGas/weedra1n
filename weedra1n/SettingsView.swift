@@ -25,10 +25,10 @@ struct SettingsView: View {
                       contentType: .utf8PlainText, defaultFilename: "weed_log") { result in
             switch result {
                 case .success(let url):
-                action.addToLog("[*] Shared log successfully")
+                action.addToLog(msg: "[*] Shared log successfully")
                 case .failure(let error):
-                action.addToLog("[*] Failed to share log")
-                action.vLog(error.localizedDescription)
+                action.addToLog(msg: "[*] Failed to share log")
+                action.vLog(msg: error.localizedDescription)
             }
         }
     }
