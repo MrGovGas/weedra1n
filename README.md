@@ -1,3 +1,6 @@
+This is work in progress, if you aren't a developer do not use this under any circumstances.
+
+# Original text
 don't use this if you don't know what ur doing. this isn't a jailbreak. this will merely strap procursus. as of now no tweaks will work. hardly any packages. hardly any repos. for developers to mess about with. have fun 
 
 all this code is dog shit, it's thrown together with a knife and fork because quite frankly i don't give a fuck and neither should you. queen of ui design
@@ -6,7 +9,7 @@ out of sheer laziness this uses [SWCompression](https://github.com/tsolomko/SWCo
 
 to build just run `make` in root, needs xcode and other shittery
 
-if u can't build ipa, use [nightly.link](https://nightly.link/elihwyma/Pogo/workflows/build/main/Pogo) or the artifact.
+if u can't build ipa, use the artifact.
 
 to install, boot ios with a modified kernel that disables amfi, open this ipa in trollstore and then press install
 
