@@ -22,6 +22,14 @@ struct SettingsView: View {
         }
         .navigationBarTitle("Settings", displayMode: .inline)
         .fileExporter(isPresented: $showFile, document: action.getLogFile(),
-                      contentType: .utf8PlainText, defaultFilename: "pogo_log") { result in }
+                      contentType: .utf8PlainText, defaultFilename: "weed_log") { result in
+            switch result {
+                case .success(let url):
+                action.addToLog("[*] Shared log successfully")
+                case .failure(let error):
+                action.addToLog("[*] Failed to share log")
+                action.vLog(error.localizedDescription)
+            }
+        }
     }
 }
