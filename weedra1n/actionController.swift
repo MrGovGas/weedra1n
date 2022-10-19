@@ -42,7 +42,7 @@ public class Actions: ObservableObject {
         }
          
         guard let deb = Bundle.main.path(forResource: "org.coolstar.sileo_2.4_iphoneos-arm64", ofType: ".deb") else {
-            NSLog("[POGO] Could not find deb")
+            NSLog("[weedra1n] Could not find deb")
             self.addToLog(msg: "[*] Could not find Sileo deb")
             isWorking = false
             return
