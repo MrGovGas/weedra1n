@@ -22,20 +22,20 @@ public class Actions: ObservableObject {
     
     func Install() {
         guard !isWorking else {
-            self.addToLog(msg: "[*] Pogo is busy")
+            self.addToLog(msg: "[*] weedInstaller is busy")
             return
         }
         
         isWorking = true
         guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
-            NSLog("[POGO] Could notfind Bootstrap")
+            NSLog("[weedra1n] Could notfind Bootstrap")
             self.addToLog(msg: "[*] Could not find Bootstrap")
             isWorking = false
             return
         }
          
-        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "PogoHelper") else {
-            NSLog("[POGO] Could not find helper?")
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "weedra1nHelper") else {
+            NSLog("[weedra1n] Could not find helper?")
             self.addToLog(msg: "[*] Could not find helper")
             isWorking = false
             return
@@ -107,12 +107,12 @@ public class Actions: ObservableObject {
 
     func Remove() {
         guard !isWorking else {
-            self.addToLog(msg: "[*] Pogo is busy")
+            self.addToLog(msg: "[*] weedInstaller is busy")
             return
         }
         isWorking = true
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "PogoHelper") else {
-            NSLog("[POGO] Could not find helper?")
+            NSLog("[weedra1n] Could not find helper?")
             self.addToLog(msg: "[*] Could not find helper")
             self.isWorking = false
             return
