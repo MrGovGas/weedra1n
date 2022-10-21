@@ -1,8 +1,8 @@
-name: Makefile CI
+name: Release
 
 on:
   push:
-    branches: [ "main", "debug" ]
+    branches: [ "main" ]
     
 jobs:
   build:
