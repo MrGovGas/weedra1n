@@ -42,10 +42,10 @@ struct ContentView: View {
                 }
                 Divider()
                 HStack {
-                    Text("v\(version) (\(gitCommit))")
+                    Text("v\(version) debug (\(gitCommit))")
                     Spacer()
                     NavigationLink(destination: SettingsView(action: action)) {
-                        Text("weedra1n")
+                        Text("Settings")
                             .foregroundColor(Color(UIColor.systemBackground))
                             .colorInvert()
                     }
@@ -54,5 +54,6 @@ struct ContentView: View {
             .background(Color(.systemGroupedBackground))
         }
         .navigationViewStyle(.stack)
+        .navigationBarTitle("weedra1n", displayMode: .inline)
     }
 }

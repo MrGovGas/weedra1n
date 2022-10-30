@@ -10,27 +10,39 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var action: Actions
     @State private var showFile = false
+    @State private var scripturl = ""
+    @State private var showNewUrl = false
+    @State private var urlIsInvalid = false
     var body: some View {
         VStack {
             List {
-                Toggle("Enable Verbose", isOn: $action.verbose)
-                Button("Save log") {
-                    showFile = true
+                Section {
+                    Toggle("Enable Verbose", isOn: $action.verbose)
                 }
+                Section {
+                    TextField("Enter script URL", text: $scripturl)
+                    Button("Select custom postinst script") {
+                        if action.canOpenURL(string: scripturl) {
+                            action.scripturl = scripturl
+                            showNewUrl = true
+                        } else {
+                            urlIsInvalid = true
+                        }
+                    }
+                    Button("Use default script") {
+                        action.useDefaultScript()
+                        showNewUrl = true
+                    }
+                }
+            }
+            .alert("Using script: " + action.scripturl, isPresented: $showNewUrl) {
+                Button("OK", role: .cancel) { }
+            }
+            .alert("Invalid URL. Script unchanged", isPresented: $urlIsInvalid) {
+                Button("OK", role: .cancel) { }
             }
             Spacer()
         }
         .navigationBarTitle("Settings", displayMode: .inline)
-        .fileExporter(isPresented: $showFile, document: action.getLogFile(),
-                      contentType: .utf8PlainText, defaultFilename: "weed_log") { result in
-            switch result {
-            case .success(let url):
-                action.addToLog(msg: "[*] Shared log successful")
-                action.vLog(msg: "url: \(url)")
-                case .failure(let error):
-                action.addToLog(msg: "[*] Failed to share log")
-                action.vLog(msg: error.localizedDescription)
-            }
-        }
     }
 }
