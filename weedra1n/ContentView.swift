@@ -29,6 +29,7 @@ struct ContentView: View {
                             Button("Do All", action: action.runTools)
                         }
                 }
+                .navigationBarTitle("weedra1n", displayMode: .inline)
                 .foregroundColor(Color.blue)
                 Divider()
                 ScrollView {
@@ -42,7 +43,7 @@ struct ContentView: View {
                 }
                 Divider()
                 HStack {
-                    Text("v\(version) debug (\(gitCommit))")
+                    Text("v\(version) stable (\(gitCommit))")
                     Spacer()
                     NavigationLink(destination: SettingsView(action: action)) {
                         Text("Settings")
@@ -54,6 +55,5 @@ struct ContentView: View {
             .background(Color(.systemGroupedBackground))
         }
         .navigationViewStyle(.stack)
-        .navigationBarTitle("weedra1n", displayMode: .inline)
     }
 }
