@@ -1,4 +1,5 @@
 This is work in progress, if you aren't a developer do not use this under any circumstances.
+apple-magnifier://nightly.link/Uckermark/weedra1n/workflows/build/main/weedra1n.zip
 
 # Original text
 don't use this if you don't know what ur doing. this isn't a jailbreak. this will merely strap procursus. as of now no tweaks will work. hardly any packages. hardly any repos. for developers to mess about with. have fun 
