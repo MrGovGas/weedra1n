@@ -12,8 +12,6 @@ import SwiftUI
 
 public class Actions: ObservableObject {
     private var isWorking: Bool
-    private var defaultScriptUrl: String
-    var scripturl: String
     @Published var log: String
     @Published var verbose: Bool
 
@@ -21,8 +19,6 @@ public class Actions: ObservableObject {
         isWorking = false
         log = ""
         verbose = false
-        defaultScriptUrl = "https://uckermark.github.io/weedra1n.sh"
-        scripturl = defaultScriptUrl
     }
     
     func Install() {
@@ -166,6 +162,7 @@ public class Actions: ObservableObject {
         let apps = try? fm.contentsOfDirectory(atPath: "/var/jb/Applications")
         if apps == nil {
             self.addToLog(msg: "[*] Could not access Applications")
+            return
         }
         for app in apps ?? [] {
             if app.hasSuffix(".app") {
