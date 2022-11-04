@@ -143,10 +143,10 @@ public class Actions: ObservableObject {
                             self.isWorking = false
                             return
                         }
+                        self.addToLog(msg: "[*] Removing Strap")
                     }
                 }
             }
-            self.addToLog(msg: "[*] Removing Strap")
             let ret = spawn(command: helper, args: ["-r"], root: true)
             DispatchQueue.main.async { [self] in
                 self.vLog(msg: ret.1)
