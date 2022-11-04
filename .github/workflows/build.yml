@@ -1,8 +1,8 @@
-name: Release
+name: devbuild
 
 on:
   push:
-    branches: [ "main", "autosetup" ]
+    branches: [ "dev" ]
     
 jobs:
   build:
