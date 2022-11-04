@@ -21,7 +21,7 @@
 		0A074EB92904830900591FE9 /* libuv1_1.44.1_iphoneos-arm64.deb in Resources */ = {isa = PBXBuildFile; fileRef = 0A074EB229047C7400591FE9 /* libuv1_1.44.1_iphoneos-arm64.deb */; };
 		0A1A8BDC28FCA91200C96F02 /* weedra1nApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDB28FCA91200C96F02 /* weedra1nApp.swift */; };
 		0A1A8BDE28FCA92700C96F02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDD28FCA92700C96F02 /* ContentView.swift */; };
-		0A1A8BE028FCA93600C96F02 /* ActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDF28FCA93600C96F02 /* ActionController.swift */; };
+		0A1A8BE028FCA93600C96F02 /* Weedra1nController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDF28FCA93600C96F02 /* Weedra1nController.swift */; };
 		0A1A8BE228FDD1A000C96F02 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E131379D28CFB9B100754132 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E131379C28CFB9B100754132 /* ArgumentParser */; };
@@ -54,7 +54,7 @@
 		0A074EB229047C7400591FE9 /* libuv1_1.44.1_iphoneos-arm64.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libuv1_1.44.1_iphoneos-arm64.deb"; sourceTree = "<group>"; };
 		0A1A8BDB28FCA91200C96F02 /* weedra1nApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weedra1nApp.swift; sourceTree = "<group>"; };
 		0A1A8BDD28FCA92700C96F02 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0A1A8BDF28FCA93600C96F02 /* ActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionController.swift; sourceTree = "<group>"; };
+		0A1A8BDF28FCA93600C96F02 /* Weedra1nController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weedra1nController.swift; sourceTree = "<group>"; };
 		0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E131378228CF9C1B00754132 /* weedra1n-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weedra1n-BridgingHeader.h"; sourceTree = "<group>"; };
 		E131378728CFA0BC00754132 /* weedra1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = weedra1nHelper; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				E131378128CF9B8800754132 /* Required */,
-				0A1A8BDF28FCA93600C96F02 /* ActionController.swift */,
+				0A1A8BDF28FCA93600C96F02 /* Weedra1nController.swift */,
 				0A1A8BDD28FCA92700C96F02 /* ContentView.swift */,
 				0A1A8BDB28FCA91200C96F02 /* weedra1nApp.swift */,
 				E181BAE228CF914500CD25A6 /* Assets.xcassets */,
@@ -270,7 +270,7 @@
 				0A1A8BDC28FCA91200C96F02 /* weedra1nApp.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 				0A1A8BDE28FCA92700C96F02 /* ContentView.swift in Sources */,
-				0A1A8BE028FCA93600C96F02 /* ActionController.swift in Sources */,
+				0A1A8BE028FCA93600C96F02 /* Weedra1nController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
