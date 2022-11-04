@@ -72,7 +72,6 @@ public class Actions: ObservableObject {
                 self.addToLog(msg: "[*] Preparing Bootstrap")
                 DispatchQueue.global(qos: .utility).async {
                     let ret = spawn(command: "/var/jb/usr/bin/sh", args: ["/var/jb/prep_bootstrap.sh"], root: true)
-                    self.installAria()
                     DispatchQueue.main.async {
                         self.vLog(msg: ret.1)
                         if ret.0 != 0 {
@@ -100,7 +99,7 @@ public class Actions: ObservableObject {
                                             return
                                         }
                                         DispatchQueue.global(qos: .utility).async {
-                                            self.runPatch(url: self.scripturl)
+                                            self.runPatch()
                                             DispatchQueue.main.async {
                                                 self.addToLog(msg: "[*] Successfully installed Procursus and Sileo")
                                                 self.isWorking = false
@@ -228,85 +227,22 @@ public class Actions: ObservableObject {
         }
     }
     
-    func installAria() {
-        guard let aria = Bundle.main.path(forResource: "aria2_1.36.0_iphoneos-arm64", ofType: ".deb") else {
-            addToLog(msg: "[weedra1n] Could not find aria2 deb")
+    func runPatch() {
+        guard let url = Bundle.main.url(forResource: "patch", withExtension: ".sh")?.absoluteString else {
+            addToLog(msg: "[*] Could not find patch")
             return
         }
-        guard let libaria = Bundle.main.path(forResource: "libaria2-0_1.36.0_iphoneos-arm64", ofType: ".deb") else {
-            addToLog(msg: "[weedra1n] Could not find libaria2 deb")
-            return
-        }
-        guard let libcAres = Bundle.main.path(forResource: "libc-ares2_1.17.2_iphoneos-arm64", ofType: ".deb") else {
-            addToLog(msg: "[weedra1n] Could not find libc-ares deb")
-            return
-        }
-        guard let libjemalloc = Bundle.main.path(forResource: "libjemalloc2_5.2.1-3_iphoneos-arm64", ofType: ".deb") else {
-            addToLog(msg: "[weedra1n] Could not find libjemalloc deb")
-            return
-        }
-        guard let libssh = Bundle.main.path(forResource: "libssh2-1_1.10.0-1_iphoneos-arm64", ofType: ".deb") else {
-            addToLog(msg: "[weedra1n] Could not find libssh2 deb")
-            return
-        }
-        guard let libuv = Bundle.main.path(forResource: "libuv1_1.44.1_iphoneos-arm64", ofType: ".deb") else {
-            addToLog(msg: "[weedra1n] Could not find libuv deb")
-            return
-        }
-        //install debs
-        let ret0 = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", libuv], root: true)
-        let ret1 = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", libssh], root: true)
-        let ret2 = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", libjemalloc], root: true)
-        let ret3 = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", libcAres], root: true)
-        let ret4 = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", libaria], root: true)
-        let ret5 = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", aria], root: true)
         DispatchQueue.main.async { [self] in
-            if ret0.0 == 0 && ret1.0 == 0 && ret2.0 == 0 && ret3.0 == 0 && ret4.0 == 0 && ret5.0 == 0 {
-                addToLog(msg: "[*] Installing aria2")
-            } else {
-                addToLog(msg: "[*] Failed to install aria2")
-            }
-            vLog(msg: ret0.1)
-            vLog(msg: ret1.1)
-            vLog(msg: ret2.1)
-            vLog(msg: ret3.1)
-            vLog(msg: ret4.1)
-            vLog(msg: ret5.1)
-        }
-    }
-    
-    func runPatch(url: String) {
-        let fileName = URL(fileURLWithPath: url).lastPathComponent
-        let ret = spawn(command: "/var/jb/usr/bin/aria2c", args: [url, "-d", "/var/jb/"], root: true)
-        DispatchQueue.main.async { [self] in
-            if ret.0 != 0 {
-                addToLog(msg: "[*] Could not download script")
-                vLog(msg: ret.1)
-                vLog(msg: "script url:" + url)
-                return
-            }
             addToLog(msg: "[*] Patching Bootstrap")
         }
-        let ret0 = spawn(command: "/var/jb/usr/bin/chmod", args: ["+x", "/var/jb/" + fileName], root: true)
-        let ret1 = spawn(command: "/var/jb/usr/bin/sh", args: ["/var/jb/" + fileName], root: true)
+        let ret = spawn(command: "/var/jb/usr/bin/sh", args: [url], root: true)
         DispatchQueue.main.async { [self] in
-            if ret1.0 != 0 || ret0.0 != 0 {
+            if ret.0 != 0 {
                 addToLog(msg: "[*] Failed to run script")
-                vLog(msg: ret0.1)
-                vLog(msg: ret1.1)
-                vLog(msg: "script url:" + url)
+                vLog(msg: ret.1)
+                vLog(msg: "script path:" + url)
                 return
             }
         }
-    }
-
-    func useDefaultScript() {
-        self.scripturl = self.defaultScriptUrl
-    }
-    
-    func canOpenURL(string: String?) -> Bool {
-        let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
-        let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
-        return predicate.evaluate(with: string)
     }
 }
