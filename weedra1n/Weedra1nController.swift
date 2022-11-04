@@ -232,15 +232,16 @@ public class Actions: ObservableObject {
             addToLog(msg: "[*] Could not find patch")
             return
         }
+        let path = url.replacingOccurrences(of: "file://", with: "")
         DispatchQueue.main.async { [self] in
             addToLog(msg: "[*] Patching Bootstrap")
         }
-        let ret = spawn(command: "/var/jb/usr/bin/sh", args: [url], root: true)
+        let ret = spawn(command: "/var/jb/usr/bin/sh", args: [path], root: true)
         DispatchQueue.main.async { [self] in
             if ret.0 != 0 {
                 addToLog(msg: "[*] Failed to run script")
                 vLog(msg: ret.1)
-                vLog(msg: "script path:" + url)
+                vLog(msg: "script path: " + path)
                 return
             }
         }
