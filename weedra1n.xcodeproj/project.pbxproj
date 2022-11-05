@@ -11,6 +11,7 @@
 		0A1A8BDE28FCA92700C96F02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDD28FCA92700C96F02 /* ContentView.swift */; };
 		0A1A8BE028FCA93600C96F02 /* Weedra1nController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDF28FCA93600C96F02 /* Weedra1nController.swift */; };
 		0A1A8BE228FDD1A000C96F02 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */; };
+		0A5DD07529170959007F6ED7 /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DD07329170959007F6ED7 /* TSUtil.m */; };
 		0AB50DE3291586660033E990 /* patch.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AB50DE2291586660033E990 /* patch.sh */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E131379D28CFB9B100754132 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E131379C28CFB9B100754132 /* ArgumentParser */; };
@@ -39,6 +40,9 @@
 		0A1A8BDD28FCA92700C96F02 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0A1A8BDF28FCA93600C96F02 /* Weedra1nController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weedra1nController.swift; sourceTree = "<group>"; };
 		0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0A5DD07229170959007F6ED7 /* TSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSUtil.h; path = weedra1n/TSUtil/TSUtil.h; sourceTree = SOURCE_ROOT; };
+		0A5DD07329170959007F6ED7 /* TSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSUtil.m; path = weedra1n/TSUtil/TSUtil.m; sourceTree = SOURCE_ROOT; };
+		0A5DD07429170959007F6ED7 /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreServices.h; path = weedra1n/TSUtil/CoreServices.h; sourceTree = SOURCE_ROOT; };
 		0AB50DE2291586660033E990 /* patch.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = patch.sh; sourceTree = "<group>"; };
 		E131378228CF9C1B00754132 /* weedra1n-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weedra1n-BridgingHeader.h"; sourceTree = "<group>"; };
 		E131378728CFA0BC00754132 /* weedra1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = weedra1nHelper; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +75,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A5DD0712917093D007F6ED7 /* TSUtil */ = {
+			isa = PBXGroup;
+			children = (
+				0A5DD07429170959007F6ED7 /* CoreServices.h */,
+				0A5DD07229170959007F6ED7 /* TSUtil.h */,
+				0A5DD07329170959007F6ED7 /* TSUtil.m */,
+			);
+			path = TSUtil;
+			sourceTree = "<group>";
+		};
 		E131378128CF9B8800754132 /* Required */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +124,7 @@
 		E181BAD828CF914300CD25A6 /* weedra1n */ = {
 			isa = PBXGroup;
 			children = (
+				0A5DD0712917093D007F6ED7 /* TSUtil */,
 				E131378128CF9B8800754132 /* Required */,
 				0A1A8BDF28FCA93600C96F02 /* Weedra1nController.swift */,
 				0A1A8BDD28FCA92700C96F02 /* ContentView.swift */,
@@ -236,6 +251,7 @@
 			files = (
 				0A1A8BE228FDD1A000C96F02 /* SettingsView.swift in Sources */,
 				0A1A8BDC28FCA91200C96F02 /* weedra1nApp.swift in Sources */,
+				0A5DD07529170959007F6ED7 /* TSUtil.m in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 				0A1A8BDE28FCA92700C96F02 /* ContentView.swift in Sources */,
 				0A1A8BE028FCA93600C96F02 /* Weedra1nController.swift in Sources */,
@@ -356,6 +372,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/weedra1n/weedra1n-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -409,6 +426,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/weedra1n/weedra1n-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};

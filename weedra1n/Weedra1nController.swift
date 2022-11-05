@@ -18,7 +18,7 @@ public class Actions: ObservableObject {
     init() {
         isWorking = false
         log = ""
-        verbose = false
+        verbose = true
     }
     
     func Install() {
@@ -198,7 +198,7 @@ public class Actions: ObservableObject {
         }
     }
     
-    func respring() {
+    func respringJB() {
         let ret = spawn(command: "/var/jb/usr/bin/sbreload", args: [], root: true)
         vLog(msg: ret.1)
         if ret.0 != 0 {
@@ -210,7 +210,7 @@ public class Actions: ObservableObject {
         runUiCache()
         remountPreboot()
         launchDaemons()
-        respring()
+        respringJB()
     }
     
     func addToLog(msg: String) {

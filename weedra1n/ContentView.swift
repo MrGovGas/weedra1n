@@ -25,7 +25,9 @@ struct ContentView: View {
                             Button("Rebuild Icon Cache", action: action.runUiCache)
                             Button("Remount Preboot", action: action.remountPreboot)
                             Button("Launch Daemons", action: action.launchDaemons)
-                            Button("Respring", action: action.respring)
+                            Button("Respring", action: {
+                                respring()
+                            })
                             Button("Do All", action: action.runTools)
                         }
                 }
@@ -43,7 +45,7 @@ struct ContentView: View {
                 }
                 Divider()
                 HStack {
-                    Text("v\(version) stable (\(gitCommit))")
+                    Text("v\(version) beta (\(gitCommit))")
                     Spacer()
                     NavigationLink(destination: SettingsView(action: action)) {
                         Text("Settings")
