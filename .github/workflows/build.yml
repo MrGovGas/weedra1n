@@ -1,4 +1,4 @@
-name: devbuild
+name: Release
 
 on:
   push:
