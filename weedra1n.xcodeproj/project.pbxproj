@@ -11,7 +11,11 @@
 		0A1A8BDE28FCA92700C96F02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDD28FCA92700C96F02 /* ContentView.swift */; };
 		0A1A8BE028FCA93600C96F02 /* Weedra1nController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BDF28FCA93600C96F02 /* Weedra1nController.swift */; };
 		0A1A8BE228FDD1A000C96F02 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */; };
-		0A5DD07529170959007F6ED7 /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DD07329170959007F6ED7 /* TSUtil.m */; };
+		0A5DD084291E3BC6007F6ED7 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DD083291E3BC6007F6ED7 /* ToolsView.swift */; };
+		0A5DD086291E3CAC007F6ED7 /* JailbreakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DD085291E3CAC007F6ED7 /* JailbreakView.swift */; };
+		0A5DD088291E3F0F007F6ED7 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DD087291E3F0F007F6ED7 /* LogView.swift */; };
+		0A5DD08F291EEE7E007F6ED7 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 0A5DD08E291EEE7E007F6ED7 /* SWCompression */; };
+		0A5DD0A02920647F007F6ED7 /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DD09F2920647F007F6ED7 /* TSUtil.m */; };
 		0AB50DE3291586660033E990 /* patch.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AB50DE2291586660033E990 /* patch.sh */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E131379D28CFB9B100754132 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E131379C28CFB9B100754132 /* ArgumentParser */; };
@@ -20,7 +24,6 @@
 		E17927DD28D267F4009D8F83 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = E17927DC28D267F4009D8F83 /* bootstrap.tar */; };
 		E181BAE328CF914500CD25A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E181BAE228CF914500CD25A6 /* Assets.xcassets */; };
 		E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */; };
-		E1C440AD28D0EDFB000DBB1A /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,16 +43,19 @@
 		0A1A8BDD28FCA92700C96F02 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0A1A8BDF28FCA93600C96F02 /* Weedra1nController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weedra1nController.swift; sourceTree = "<group>"; };
 		0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		0A5DD07229170959007F6ED7 /* TSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSUtil.h; path = weedra1n/TSUtil/TSUtil.h; sourceTree = SOURCE_ROOT; };
-		0A5DD07329170959007F6ED7 /* TSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSUtil.m; path = weedra1n/TSUtil/TSUtil.m; sourceTree = SOURCE_ROOT; };
-		0A5DD07429170959007F6ED7 /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreServices.h; path = weedra1n/TSUtil/CoreServices.h; sourceTree = SOURCE_ROOT; };
+		0A5DD083291E3BC6007F6ED7 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
+		0A5DD085291E3CAC007F6ED7 /* JailbreakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JailbreakView.swift; sourceTree = "<group>"; };
+		0A5DD087291E3F0F007F6ED7 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		0A5DD09D2920647F007F6ED7 /* TSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSUtil.h; sourceTree = "<group>"; };
+		0A5DD09E2920647F007F6ED7 /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreServices.h; sourceTree = "<group>"; };
+		0A5DD09F2920647F007F6ED7 /* TSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSUtil.m; sourceTree = "<group>"; };
 		0AB50DE2291586660033E990 /* patch.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = patch.sh; sourceTree = "<group>"; };
 		E131378228CF9C1B00754132 /* weedra1n-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weedra1n-BridgingHeader.h"; sourceTree = "<group>"; };
-		E131378728CFA0BC00754132 /* weedra1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = weedra1nHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		E131378728CFA0BC00754132 /* weedra1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = weedra1nHelper; path = "/Users/llausen/Documents/weedra1n/build/Debug-iphoneos/weedra1nHelper"; sourceTree = "<absolute>"; };
 		E131378E28CFA16B00754132 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E17927D928D24DB6009D8F83 /* org.coolstar.sileo_2.4_iphoneos-arm64.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "org.coolstar.sileo_2.4_iphoneos-arm64.deb"; sourceTree = "<group>"; };
 		E17927DC28D267F4009D8F83 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
-		E181BAD628CF914300CD25A6 /* weedra1n.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weedra1n.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E181BAD628CF914300CD25A6 /* weedra1n.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = weedra1n.app; path = "/Users/llausen/Documents/weedra1n/build/Debug-iphoneos/weedra1n.app"; sourceTree = "<absolute>"; };
 		E181BAE228CF914500CD25A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E181BAE728CF914500CD25A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
@@ -69,20 +75,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A5DD08F291EEE7E007F6ED7 /* SWCompression in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A5DD0712917093D007F6ED7 /* TSUtil */ = {
+		0A5DD082291E3B89007F6ED7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0A5DD07429170959007F6ED7 /* CoreServices.h */,
-				0A5DD07229170959007F6ED7 /* TSUtil.h */,
-				0A5DD07329170959007F6ED7 /* TSUtil.m */,
+				0A5DD083291E3BC6007F6ED7 /* ToolsView.swift */,
+				0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */,
+				0A5DD085291E3CAC007F6ED7 /* JailbreakView.swift */,
+				0A1A8BDD28FCA92700C96F02 /* ContentView.swift */,
+				0A5DD087291E3F0F007F6ED7 /* LogView.swift */,
 			);
-			path = TSUtil;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0A5DD09C2920644A007F6ED7 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
+				0A5DD09E2920647F007F6ED7 /* CoreServices.h */,
+				0A5DD09D2920647F007F6ED7 /* TSUtil.h */,
+				0A5DD09F2920647F007F6ED7 /* TSUtil.m */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		E131378128CF9B8800754132 /* Required */ = {
@@ -108,32 +128,20 @@
 			children = (
 				E181BAD828CF914300CD25A6 /* weedra1n */,
 				E131378828CFA0BC00754132 /* weedra1nHelper */,
-				E181BAD728CF914300CD25A6 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		E181BAD728CF914300CD25A6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E181BAD628CF914300CD25A6 /* weedra1n.app */,
-				E131378728CFA0BC00754132 /* weedra1nHelper */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		E181BAD828CF914300CD25A6 /* weedra1n */ = {
 			isa = PBXGroup;
 			children = (
-				0A5DD0712917093D007F6ED7 /* TSUtil */,
 				E131378128CF9B8800754132 /* Required */,
+				0A5DD09C2920644A007F6ED7 /* Utility */,
+				0A5DD082291E3B89007F6ED7 /* Views */,
+				E131378228CF9C1B00754132 /* weedra1n-BridgingHeader.h */,
 				0A1A8BDF28FCA93600C96F02 /* Weedra1nController.swift */,
-				0A1A8BDD28FCA92700C96F02 /* ContentView.swift */,
 				0A1A8BDB28FCA91200C96F02 /* weedra1nApp.swift */,
 				E181BAE228CF914500CD25A6 /* Assets.xcassets */,
 				E181BAE728CF914500CD25A6 /* Info.plist */,
-				E131378228CF9C1B00754132 /* weedra1n-BridgingHeader.h */,
-				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
-				0A1A8BE128FDD1A000C96F02 /* SettingsView.swift */,
 			);
 			path = weedra1n;
 			sourceTree = "<group>";
@@ -175,6 +183,9 @@
 			dependencies = (
 			);
 			name = weedra1n;
+			packageProductDependencies = (
+				0A5DD08E291EEE7E007F6ED7 /* SWCompression */,
+			);
 			productName = Pogo;
 			productReference = E181BAD628CF914300CD25A6 /* weedra1n.app */;
 			productType = "com.apple.product-type.application";
@@ -211,7 +222,7 @@
 				E131379B28CFB9B100754132 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 				E17927D628D247B2009D8F83 /* XCRemoteSwiftPackageReference "SWCompression" */,
 			);
-			productRefGroup = E181BAD728CF914300CD25A6 /* Products */;
+			productRefGroup = E181BACD28CF914300CD25A6;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -240,7 +251,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1C440AD28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 				E131378F28CFA16B00754132 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,9 +261,12 @@
 			files = (
 				0A1A8BE228FDD1A000C96F02 /* SettingsView.swift in Sources */,
 				0A1A8BDC28FCA91200C96F02 /* weedra1nApp.swift in Sources */,
-				0A5DD07529170959007F6ED7 /* TSUtil.m in Sources */,
+				0A5DD0A02920647F007F6ED7 /* TSUtil.m in Sources */,
+				0A5DD084291E3BC6007F6ED7 /* ToolsView.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 				0A1A8BDE28FCA92700C96F02 /* ContentView.swift in Sources */,
+				0A5DD086291E3CAC007F6ED7 /* JailbreakView.swift in Sources */,
+				0A5DD088291E3F0F007F6ED7 /* LogView.swift in Sources */,
 				0A1A8BE028FCA93600C96F02 /* Weedra1nController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,6 +567,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0A5DD08E291EEE7E007F6ED7 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E17927D628D247B2009D8F83 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
 		E131379C28CFB9B100754132 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E131379B28CFB9B100754132 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;

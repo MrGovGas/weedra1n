@@ -1,12 +1,11 @@
 //
 //  actionController.swift
-//  Pogo
+//  weedra1n
 //
 //  Created by Uckermark on 16.10.22.
 //
 
 import Foundation
-import UniformTypeIdentifiers
 import SwiftUI
 
 
@@ -18,7 +17,7 @@ public class Actions: ObservableObject {
     init() {
         isWorking = false
         log = ""
-        verbose = true
+        verbose = false
     }
     
     func Install() {
@@ -53,13 +52,8 @@ public class Actions: ObservableObject {
         DispatchQueue.global(qos: .utility).async { [self] in
             let ret1 = spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true).1
             let ret = spawn(command: helper, args: ["-i", tar], root: true)
-            let ret2 = spawn(command: "/var/jb/usr/bin/chmod", args: ["4755", "/var/jb/usr/bin/sudo"], root: true).1
-            let ret3 = spawn(command: "/var/jb/usr/bin/chown", args: ["root:wheel", "/var/jb/usr/bin/sudo"], root: true).1
             DispatchQueue.main.async {
-                //self.vLog(msg: ret.1) //DO NOT UNCOMMENT, IT'S BROKEN
                 self.vLog(msg: ret1)
-                self.vLog(msg: ret2)
-                self.vLog(msg: ret3)
                 if ret.0 != 0 {
                     self.addToLog(msg: "[*] Error Installing Bootstrap")
                     self.isWorking = false
@@ -157,6 +151,10 @@ public class Actions: ObservableObject {
     }
     
     func runUiCache() {
+        guard isJailbroken() else{
+            addToLog(msg: "[*] Could not find Bootstrap. Are you jailbroken?")
+            return
+        }
         // for every .app file in /var/jb/Applications, run uicache -p
         let fm = FileManager.default
         let apps = try? fm.contentsOfDirectory(atPath: "/var/jb/Applications")
@@ -189,6 +187,10 @@ public class Actions: ObservableObject {
     }
     
     func launchDaemons() {
+        guard isJailbroken() else{
+            addToLog(msg: "[*] Could not find Bootstrap. Are you jailbroken?")
+            return
+        }
         let ret = spawn(command: "/var/jb/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
         vLog(msg: ret.1)
         if ret.0 != 0 && ret.0 != 34048 {
@@ -199,6 +201,10 @@ public class Actions: ObservableObject {
     }
     
     func respringJB() {
+        guard isJailbroken() else{
+            addToLog(msg: "[*] Could not find Bootstrap. Are you jailbroken?")
+            return
+        }
         let ret = spawn(command: "/var/jb/usr/bin/sbreload", args: [], root: true)
         vLog(msg: ret.1)
         if ret.0 != 0 {
@@ -207,6 +213,10 @@ public class Actions: ObservableObject {
     }
     
     func runTools() {
+        guard isJailbroken() else {
+            addToLog(msg: "[*] Could not find Bootstrap. Are you jailbroken?")
+            return
+        }
         runUiCache()
         remountPreboot()
         launchDaemons()
@@ -215,7 +225,7 @@ public class Actions: ObservableObject {
     
     func addToLog(msg: String) {
         NSLog(msg)
-        log = msg + "\n" + log
+        log = log + "\n" + msg
     }
     
     func vLog(msg: String) {
@@ -241,6 +251,55 @@ public class Actions: ObservableObject {
                 vLog(msg: "script path: " + path)
                 return
             }
+        }
+    }
+    
+    func isJailbroken() -> Bool {
+        if FileManager().fileExists(atPath: "/var/jb/.procursus_strapped"){
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func installUpdate() {
+        addToLog(msg: "[*] Installing update")
+    }
+    
+    func downloadUpdate() {
+        isWorking = true
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "weedra1nHelper") else {
+            NSLog("[weedra1n] Could not find helper?")
+            addToLog(msg: "[*] Could not find helper")
+            isWorking = false
+            return
+        }
+        addToLog(msg: "[*] Downloading update")
+        DispatchQueue.global(qos: .utility).async {
+            let ret = spawn(command: helper, args: ["-u"], root: true)
+            DispatchQueue.main.async {
+                self.vLog(msg: ret.1)
+                DispatchQueue.global(qos: .utility).async {
+                    let ret = spawn(command: helper, args: ["-e"], root: true)
+                    DispatchQueue.main.async {
+                        self.vLog(msg: ret.1)
+                        self.addToLog(msg: "[*] Finished Downloading. You can now install in the Settings tab")
+                        self.isWorking = false
+                    }
+                }
+            }
+        }
+    }
+    
+    func removeDocDirectory() {
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "weedra1nHelper") else {
+            NSLog("[weedra1n] Could not find helper?")
+            addToLog(msg: "[*] Could not find helper")
+            isWorking = false
+            return
+        }
+        DispatchQueue.global(qos: .utility).async {
+            spawn(command: helper, args: ["-c"], root: true)
         }
     }
 }

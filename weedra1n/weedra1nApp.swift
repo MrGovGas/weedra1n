@@ -10,10 +10,17 @@ import SwiftUI
 
 @main
 struct PogoApp: App {
-    var action = Actions()
+    var action: Actions
+    
+    init() {
+        action = Actions()
+        if FileManager().fileExists(atPath: "/var/mobile/Documents/") {
+            action.removeDocDirectory()
+        }
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView(action: action)
+            ContentView(act: action)
         }
     }
 }

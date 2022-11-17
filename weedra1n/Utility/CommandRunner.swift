@@ -139,5 +139,9 @@ import Darwin.POSIX
     var status: Int32 = 0
     waitpid(pid, &status, 0)
     NSLog("[weedra1n] \(status) \(stdoutStr) \(stderrStr)")
-    return (Int(status), "exit code: \(status)\n err: \(stderrStr)\n out: \(stdoutStr)")
+    var cmd = ""
+    for arg in args {
+        cmd += arg + " "
+    }
+    return (Int(status), "\(cmd)\nexit \(status)\n\(stderrStr)\(stdoutStr)")
 }
