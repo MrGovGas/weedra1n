@@ -25,7 +25,7 @@ struct SettingsView: View {
             List {
                 Section(header: Text("UPDATE")) {
                     if latestVersion! != version && !FileManager().fileExists(atPath: "/var/mobile/Documents/weedra1n/weedra1n.ipa") {
-                        Button("Download Update to \(latestVersion!)", action: action.downloadUpdate(dev))
+                        Button("Download Update to \(latestVersion!)", action: {action.downloadUpdate(UseDev: dev)})
                     }
                     if FileManager().fileExists(atPath: "/var/mobile/Documents/weedra1n/weedra1n.ipa") {
                         let tsUrl = URL(string: "apple-magnifier://install?url=file:///var/mobile/Documents/weedra1n/weedra1n.ipa")!
