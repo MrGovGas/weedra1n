@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.openURL) private var openURL
     @ObservedObject var action: Actions
+    @State var rootless: Bool = true
     private let gitCommit = Bundle.main.infoDictionary?["REVISION"] as? String ?? "unknown"
     private let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
     private var latestVersion: String?
@@ -21,8 +22,8 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             List {
-                Section {
-                    if latestVersion! != version {
+                Section(header: Text("UPDATE")) {
+                    if latestVersion! != version && !FileManager().fileExists(atPath: "/var/mobile/Documents/weedra1n/weedra1n.ipa") {
                         Button("Download Update to \(latestVersion!)", action: action.downloadUpdate)
                     }
                     if FileManager().fileExists(atPath: "/var/mobile/Documents/weedra1n/weedra1n.ipa") {
@@ -32,8 +33,18 @@ struct SettingsView: View {
                         }
                     }
                 }
-                Toggle("Enable Verbose", isOn: $action.verbose)
-                Button("Restore RootFS", action: action.Remove)
+                Section(header: Text("SETTINGS")) {
+                    Toggle("Enable Verbose", isOn: $action.verbose)
+                    Toggle("Use rootless", isOn: $rootless)
+                        .disabled(true)
+                }
+                Section(header: Text("TOOLS")) {
+                    Button("Rebuild Icon Cache", action: action.runUiCache)
+                    Button("Remount Preboot", action: action.remountPreboot)
+                    Button("Launch Daemons", action: action.launchDaemons)
+                    Button("Respring", action: respring)
+                    Button("Restore RootFS", action: action.Remove)
+                }
             }
             Spacer()
             HStack {

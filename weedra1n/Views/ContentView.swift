@@ -29,10 +29,6 @@ struct ContentView: View {
                 .tabItem {
                     Label("Log", systemImage: "doc.text.magnifyingglass")
                 }
-            SettingsView(act: action)
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
         }
     }
 }
