@@ -21,13 +21,13 @@ struct ContentView: View {
                 .tabItem {
                     Label("Jailbreak", systemImage: "wand.and.stars")
                 }
-            ToolsView(action: action)
-                .tabItem {
-                    Label("Tools", systemImage: "wrench.and.screwdriver")
-                }
             LogView(action: action)
                 .tabItem {
                     Label("Log", systemImage: "doc.text.magnifyingglass")
+            }
+            SettingsView(act: action)
+                .tabItem {
+                    Label("Tools", systemImage: "wrench.and.screwdriver")
                 }
         }
     }
