@@ -278,11 +278,11 @@ public class Actions: ObservableObject {
         DispatchQueue.global(qos: .utility).async {
             let dArgs: String
             if UseDev {
-                dArgs = "-u --dev"
+                dArgs = ["-u", "--dev"]
             } else {
-                dArgs = "-u"
+                dArgs = ["-u"]
             }
-            let ret = spawn(command: helper, args: [dArgs], root: true)
+            let ret = spawn(command: helper, args: dArgs, root: true)
             DispatchQueue.main.async {
                 self.vLog(msg: ret.1)
                 DispatchQueue.global(qos: .utility).async {
