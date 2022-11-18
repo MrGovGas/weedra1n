@@ -11,6 +11,7 @@ struct SettingsView: View {
     @Environment(\.openURL) private var openURL
     @ObservedObject var action: Actions
     @State var rootless: Bool = true
+    @State var dev: Bool = false
     private let gitCommit = Bundle.main.infoDictionary?["REVISION"] as? String ?? "unknown"
     private let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
     private var latestVersion: String?
@@ -24,7 +25,7 @@ struct SettingsView: View {
             List {
                 Section(header: Text("UPDATE")) {
                     if latestVersion! != version && !FileManager().fileExists(atPath: "/var/mobile/Documents/weedra1n/weedra1n.ipa") {
-                        Button("Download Update to \(latestVersion!)", action: action.downloadUpdate)
+                        Button("Download Update to \(latestVersion!)", action: action.downloadUpdate(dev))
                     }
                     if FileManager().fileExists(atPath: "/var/mobile/Documents/weedra1n/weedra1n.ipa") {
                         let tsUrl = URL(string: "apple-magnifier://install?url=file:///var/mobile/Documents/weedra1n/weedra1n.ipa")!
@@ -37,6 +38,7 @@ struct SettingsView: View {
                     Toggle("Enable Verbose", isOn: $action.verbose)
                     Toggle("Use rootless", isOn: $rootless)
                         .disabled(true)
+                    Toggle("Allow untested updates", isOn: $dev)
                 }
                 Section(header: Text("TOOLS")) {
                     Button("Rebuild Icon Cache", action: action.runUiCache)

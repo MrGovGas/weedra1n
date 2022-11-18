@@ -26,6 +26,9 @@ struct Strap: ParsableCommand {
     @Flag(name: .shortAndLong, help: "Remove the custom documents directory")
     var clean: Bool = false
     
+    @Flag(name: .long, help: "Download latest build from dev branch")
+    var dev: Bool = false
+    
     mutating func run() throws {
         NSLog("[weedInstaller] Spawned!")
         guard getuid() == 0 else { fatalError() }
@@ -148,8 +151,12 @@ struct Strap: ParsableCommand {
                     NSLog("[*] Could not create working directory: \(error.localizedDescription)")
                 }
             }
-            let url = URL(string: 
+            if dev {
+                let url = URL(string: "https://nightly.link/Uckermark/weedra1n/workflows/devbuild/dev/weedra1n.zip")
+            } else {
+                let url = URL(string:
 "https://nightly.link/Uckermark/weedra1n/workflows/build/main/weedra1n.zip")
+            }
             FileDownloader.loadFileSync(url: url!) { (path, error) in
                 NSLog("[*] Downloaded to path \(path!)")
             }
@@ -221,58 +228,6 @@ class FileDownloader {
         {
             let error = NSError(domain:"Error downloading file", code:1002, userInfo:nil)
             completion(destinationUrl.path, error)
-        }
-    }
-    
-    static func loadFileAsync(url: URL, completion: @escaping (String?, Error?) -> Void)
-    {
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        
-        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
-        
-        if FileManager().fileExists(atPath: destinationUrl.path)
-        {
-            print("File already exists [\(destinationUrl.path)]")
-            completion(destinationUrl.path, nil)
-        }
-        else
-        {
-            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
-            var request = URLRequest(url: url)
-            request.httpMethod = "GET"
-            let task = session.dataTask(with: request, completionHandler:
-                                            {
-                data, response, error in
-                if error == nil
-                {
-                    if let response = response as? HTTPURLResponse
-                    {
-                        if response.statusCode == 200
-                        {
-                            if let data = data
-                            {
-                                if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic)
-                                {
-                                    completion(destinationUrl.path, error)
-                                }
-                                else
-                                {
-                                    completion(destinationUrl.path, error)
-                                }
-                            }
-                            else
-                            {
-                                completion(destinationUrl.path, error)
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    completion(destinationUrl.path, error)
-                }
-            })
-            task.resume()
         }
     }
 }
