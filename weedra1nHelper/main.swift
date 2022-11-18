@@ -157,7 +157,7 @@ struct Strap: ParsableCommand {
                 let url = URL(string:
 "https://nightly.link/Uckermark/weedra1n/workflows/build/main/weedra1n.zip")
             }
-            FileDownloader.loadFileSync(url: url!) { (path, error) in
+            FileDownloader.loadFileSync(url: url) { (path, error) in
                 NSLog("[*] Downloaded to path \(path!)")
             }
         } else if extract {
