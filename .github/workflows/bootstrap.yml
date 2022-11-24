@@ -1,7 +1,6 @@
-name: Release
+name: bootstrap
 
 on:
-  push:
     workflow_dispatch
     
 jobs:
